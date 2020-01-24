@@ -43,8 +43,9 @@ final class DiffableDataSourceCore<SectionIdentifierType: Hashable, ItemIdentifi
                 performDiffingUpdates()
             }
             else {
-                CATransaction.setDisableActions(true)
-                performDiffingUpdates()
+                UIView.performWithoutAnimation {
+                    performDiffingUpdates()
+                }
             }
 
             CATransaction.commit()
